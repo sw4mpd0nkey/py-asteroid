@@ -27,7 +27,7 @@ def main():
 
         # pause game loop for 1/60th sec
         dt = (clock.tick(60) / 1000)
-        print(dt)
+        #print(dt)
 
 if __name__ == "__main__":
     main()

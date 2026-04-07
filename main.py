@@ -1,5 +1,6 @@
 import pygame
 import constants
+from player import Player
 from logger import log_state
 
 def main():    
@@ -12,9 +13,14 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # player object
+    player = Player(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
+
     # game loop
     while True:
         log_state()
+
+        player.draw(screen)
 
         # process the pygame event queue
         for event in pygame.event.get():

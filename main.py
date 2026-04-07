@@ -20,8 +20,6 @@ def main():
     while True:
         log_state()
 
-        player.draw(screen)
-
         # process the pygame event queue
         for event in pygame.event.get():
             if event.type == pygame.quit:
@@ -29,6 +27,7 @@ def main():
 
         color = (0, 0, 0)
         screen.fill(color)
+        player.draw(screen)
         pygame.display.flip()
 
         # pause game loop for 1/60th sec

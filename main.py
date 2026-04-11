@@ -43,11 +43,24 @@ def main():
 
         updatable.update(dt)
 
+        # player collision detection with astroids
         for asteroid in asteroids:
             if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
+
+
+        # collision detection for astroid and shots
+        for shot in shots:
+            for asteroid in asteroids:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    asteroid.kill()
+
+
+
         # drawing screen
         color = (0, 0, 0)
         screen.fill(color)

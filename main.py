@@ -13,8 +13,15 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    #group defs
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
     # player object
     player = Player(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
+
 
     # game loop
     while True:
@@ -25,10 +32,13 @@ def main():
             if event.type == pygame.quit:
                 return
 
-        player.update(dt)
+        updatable.update(dt)
         color = (0, 0, 0)
         screen.fill(color)
-        player.draw(screen)
+        
+        for to_draw in drawable:
+            to_draw.draw(screen)
+
         pygame.display.flip()
 
         # pause game loop for 1/60th sec
